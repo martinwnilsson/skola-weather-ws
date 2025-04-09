@@ -4,11 +4,11 @@ const APIentry = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/v
 export async function getData(lat, lon){
 	const url = APIentry + "lon/" + lon + "/lat/" + lat + "/data.json";
 	
-	// Hämta text-baserad data från SMHI API. await -> vänta här på att fetch är klar
-	// fetch är en async funktion och programkörning går utan await vidare fast fetch inte är klar
+	// HÃ¤mta text-baserad data frÃ¥n SMHI API. await -> vÃ¤nta hÃ¤r pÃ¥ att fetch Ã¤r klar
+	// fetch Ã¤r en async funktion och programkÃ¶rning gÃ¥r utan await vidare fast fetch inte Ã¤r klar
 	const response = await fetch(url);
 
-	// Konvertera text-baserad data till JSON-format, även detta är en async funktion och kräver await för att inte direkt gå vidare
+	// Konvertera text-baserad data till JSON-format, Ã¤ven detta Ã¤r en async funktion och krÃ¤ver await fÃ¶r att inte direkt gÃ¥ vidare
 	const data = await response.json();
 
 	return data;
@@ -18,7 +18,7 @@ export async function getData(lat, lon){
 
 export async function getWeatherForecast(lat, lon) {
     const smhiApiUrl = `https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/${lon}/lat/${lat}/data.json`;
-
+    console.log("hämtar data");
     try {
         const response = await fetch(smhiApiUrl);
         const data = await response.json();
@@ -30,12 +30,16 @@ export async function getWeatherForecast(lat, lon) {
         function paramArrayToObject(paramArray) {
             const paramObject = {};
             paramArray.forEach(param => {
-                paramObject[param.name] = param.value;
+                console.log("param", param);
+                paramObject[param.name] = {
+                    value: param.values[0],
+                    unit: param.unit
+                };
             });
             return paramObject;
         }
 
-        // Extrahera relevanta väderprognoser
+        // Extrahera relevanta vÃ¤derprognoser
         const forecasts = data.timeSeries.map(entry => ({
             time: entry.validTime,
             parameters: paramArrayToObject(entry.parameters)
