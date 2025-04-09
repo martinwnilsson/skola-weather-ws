@@ -1,6 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\app",
+    "\\app\\test",
+    "\\components",
+    "\\logic",
+    "\\public",
+    "\\public\\weather-icons"
   ],
+  "SelectedNode": "\\app\\test\\page_client.js",
   "PreviewInSolutionExplorer": false
 }
