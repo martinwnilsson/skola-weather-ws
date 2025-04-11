@@ -1,7 +1,7 @@
-import TestClient from "./page_client.js";
+import WeatherDays from "./WeatherDays.js";
 
 const Test = () => {
-    return <TestClient />
+    return <WeatherDays />
 }
 
 export default Test;
