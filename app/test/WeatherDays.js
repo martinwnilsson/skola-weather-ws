@@ -7,15 +7,15 @@ import { useEffect, useState } from "react";
 const WeatherDays = () => {
 
     /* 
-        Skapar en property weatherData, tillsammans med en 'setter'-funktion, att spara hÃ¤mtad SMHI vÃ¤derdata i 
-        1) React's useState gÃ¶r att propertyn behÃ¥ller sitt vÃ¤rde mellan renderingar (vilket variabler/property's normalt inte gÃ¶r)
+        Skapar en property weatherData, tillsammans med en 'setter'-funktion, att spara hämtad SMHI väderdata i 
+        1) React's useState gö att propertyn behåller sitt vÃ¤rde mellan renderingar (vilket variabler/property's normalt inte gör)
         2) Setter-funktionen tvingar komponenten till om-rendering
     */
     const [weatherData, setWeatherData] = useState(null);
 
     /*
-        Funktionen som skickas till useEffect kÃ¶rs efter att komponenten renderats
-        Praxis Ã¤r att gÃ¶ra API-anrop i useEffect, och spara resultatet i en property med hjÃ¤lp av useState (dess 'setter'-funktion)
+        Funktionen som skickas till useEffect körs efter att komponenten renderats
+        Praxis är att göra API-anrop i useEffect, och spara resultatet i en property med hjälp av useState (dess 'setter'-funktion)
     */
     useEffect(() => {
         // Anropa getWeatherForecast med latitud och longitud fÃ¶r Karlstad
@@ -24,7 +24,7 @@ const WeatherDays = () => {
                 setWeatherData(SMHIdata);
             })
             .catch(error => console.error(error));
-    }, []); // Ett villkor som Ã¤r tomt, en tom array, betyder att useEffect bara kÃ¶rs en gÃ¥ng, nÃ¤r komponenten laddas fÃ¶rsta gÃ¥ngen
+    }, []); // Ett villkor som är tomt, en tom array, betyder att useEffect bara körs en gång, när komponenten laddas första gången
 
 
     if (weatherData) {
@@ -35,7 +35,7 @@ const WeatherDays = () => {
         </div>
     } else {
         return <div className="flex flex-row justify-center gap-4">
-            <p>Laddar vÃ¤derdata...</p>
+            <p>Laddar väderdata...</p>
         </div>
     }
 }
