@@ -4,8 +4,8 @@
     "\\app",
     "\\app\\test",
     "\\components",
-    "\\logic",
-    "\\public\\weather-icons"
+    "\\logic"
   ],
+  "SelectedNode": "\\components\\WeatherCardSmall.js",
   "PreviewInSolutionExplorer": false
 }
