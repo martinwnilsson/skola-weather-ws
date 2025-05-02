@@ -3,7 +3,7 @@ const APIentry = "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/v
 
 export async function getWeatherForecast(lat, lon) {
     const smhiApiUrl = APIentry + "lon/" + lon + "/lat/" + lat + "/data.json";
-    console.log("H�mtar v�derdata...");
+    console.log("HÃ¤mtar vÃ¤derdata...");
     try {
         const response = await fetch(smhiApiUrl);
         const data = await response.json();
@@ -11,7 +11,7 @@ export async function getWeatherForecast(lat, lon) {
         // Debuggar raw respons
         console.debug("Raw response:", data);
 
-        // Konverterar en parameter-array till ett objekt med nycklar som parameter-namn f�r enklare anv�ndning av datan
+        // Konverterar en parameter-array till ett objekt med nycklar som parameter-namn fÃ¶r enklare anvÃ¤ndning av datan
         function paramArrayToObject(paramArray) {
             const paramObject = {};
             paramArray.forEach(param => {
@@ -23,7 +23,7 @@ export async function getWeatherForecast(lat, lon) {
             return paramObject;
         }
 
-        // Extrahera relevanta väderprognoser
+        // Extrahera relevanta vÃ¤derprognoser
         const forecasts = data.timeSeries.map(entry => ({
             time: entry.validTime,
             parameters: paramArrayToObject(entry.parameters)

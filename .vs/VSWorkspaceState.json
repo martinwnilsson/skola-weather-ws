@@ -5,7 +5,6 @@
     "\\app\\test",
     "\\components",
     "\\logic",
-    "\\public",
     "\\public\\weather-icons"
   ],
   "PreviewInSolutionExplorer": false
